@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bosssoft.hr.bes.dao.Mapper.ResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.bosssoft.hr.bes.exam.pojo.pojo.Resource" >
+    <id column="resourceId" property="resourceid" jdbcType="INTEGER" />
+    <result column="pointName" property="pointname" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="openIcon" property="openicon" jdbcType="VARCHAR" />
+    <result column="closeIcon" property="closeicon" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="SMALLINT" />
+    <result column="childId" property="childid" jdbcType="SMALLINT" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="createdTime" property="createdtime" jdbcType="DATE" />
+    <result column="updatedTime" property="updatedtime" jdbcType="DATE" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resourceId, pointName, number, id, parentId, url, openIcon, closeIcon, type, childId, 
+    remarks, status, createdTime, updatedTime, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_resource
+    where resourceId = #{resourceid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_resource
+    where resourceId = #{resourceid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bosssoft.hr.bes.exam.pojo.pojo.Resource" >
+    insert into t_resource (resourceId, pointName, number, 
+      id, parentId, url, 
+      openIcon, closeIcon, type, 
+      childId, remarks, status, 
+      createdTime, updatedTime, version
+      )
+    values (#{resourceid,jdbcType=INTEGER}, #{pointname,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{parentid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{openicon,jdbcType=VARCHAR}, #{closeicon,jdbcType=VARCHAR}, #{type,jdbcType=SMALLINT}, 
+      #{childid,jdbcType=SMALLINT}, #{remarks,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, 
+      #{createdtime,jdbcType=DATE}, #{updatedtime,jdbcType=DATE}, #{version,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bosssoft.hr.bes.exam.pojo.pojo.Resource" >
+    insert into t_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resourceid != null" >
+        resourceId,
+      </if>
+      <if test="pointname != null" >
+        pointName,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="openicon != null" >
+        openIcon,
+      </if>
+      <if test="closeicon != null" >
+        closeIcon,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="childid != null" >
+        childId,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createdtime != null" >
+        createdTime,
+      </if>
+      <if test="updatedtime != null" >
+        updatedTime,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resourceid != null" >
+        #{resourceid,jdbcType=INTEGER},
+      </if>
+      <if test="pointname != null" >
+        #{pointname,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="openicon != null" >
+        #{openicon,jdbcType=VARCHAR},
+      </if>
+      <if test="closeicon != null" >
+        #{closeicon,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="childid != null" >
+        #{childid,jdbcType=SMALLINT},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null" >
+        #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bosssoft.hr.bes.exam.pojo.pojo.Resource" >
+    update t_resource
+    <set >
+      <if test="pointname != null" >
+        pointName = #{pointname,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="openicon != null" >
+        openIcon = #{openicon,jdbcType=VARCHAR},
+      </if>
+      <if test="closeicon != null" >
+        closeIcon = #{closeicon,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="childid != null" >
+        childId = #{childid,jdbcType=SMALLINT},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createdtime != null" >
+        createdTime = #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null" >
+        updatedTime = #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resourceId = #{resourceid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bosssoft.hr.bes.exam.pojo.pojo.Resource" >
+    update t_resource
+    set pointName = #{pointname,jdbcType=VARCHAR},
+      number = #{number,jdbcType=VARCHAR},
+      id = #{id,jdbcType=INTEGER},
+      parentId = #{parentid,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      openIcon = #{openicon,jdbcType=VARCHAR},
+      closeIcon = #{closeicon,jdbcType=VARCHAR},
+      type = #{type,jdbcType=SMALLINT},
+      childId = #{childid,jdbcType=SMALLINT},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT},
+      createdTime = #{createdtime,jdbcType=DATE},
+      updatedTime = #{updatedtime,jdbcType=DATE},
+      version = #{version,jdbcType=VARCHAR}
+    where resourceId = #{resourceid,jdbcType=INTEGER}
+  </update>
+</mapper>

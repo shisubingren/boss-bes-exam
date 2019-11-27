@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bosssoft.hr.bes.dao.Mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.bosssoft.hr.bes.exam.pojo.pojo.User" >
+    <id column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="jobNum" property="jobnum" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="headPhoto" property="headphoto" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="SMALLINT" />
+    <result column="birth" property="birth" jdbcType="DATE" />
+    <result column="telePhone" property="telephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="otherPhone" property="otherphone" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="createdTime" property="createdtime" jdbcType="DATE" />
+    <result column="updatedTime" property="updatedtime" jdbcType="DATE" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userId, jobNum, password, name, headPhoto, sex, birth, telePhone, email, otherPhone, 
+    remarks, status, createdTime, updatedTime, version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bosssoft.hr.bes.exam.pojo.pojo.User" >
+    insert into t_user (userId, jobNum, password, 
+      name, headPhoto, sex, 
+      birth, telePhone, email, 
+      otherPhone, remarks, status, 
+      createdTime, updatedTime, version
+      )
+    values (#{userid,jdbcType=INTEGER}, #{jobnum,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{headphoto,jdbcType=VARCHAR}, #{sex,jdbcType=SMALLINT}, 
+      #{birth,jdbcType=DATE}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{otherphone,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, 
+      #{createdtime,jdbcType=DATE}, #{updatedtime,jdbcType=DATE}, #{version,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bosssoft.hr.bes.exam.pojo.pojo.User" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="jobnum != null" >
+        jobNum,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="headphoto != null" >
+        headPhoto,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birth != null" >
+        birth,
+      </if>
+      <if test="telephone != null" >
+        telePhone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="otherphone != null" >
+        otherPhone,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createdtime != null" >
+        createdTime,
+      </if>
+      <if test="updatedtime != null" >
+        updatedTime,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="jobnum != null" >
+        #{jobnum,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="headphoto != null" >
+        #{headphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="birth != null" >
+        #{birth,jdbcType=DATE},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="otherphone != null" >
+        #{otherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null" >
+        #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bosssoft.hr.bes.exam.pojo.pojo.User" >
+    update t_user
+    <set >
+      <if test="jobnum != null" >
+        jobNum = #{jobnum,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="headphoto != null" >
+        headPhoto = #{headphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="birth != null" >
+        birth = #{birth,jdbcType=DATE},
+      </if>
+      <if test="telephone != null" >
+        telePhone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="otherphone != null" >
+        otherPhone = #{otherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createdtime != null" >
+        createdTime = #{createdtime,jdbcType=DATE},
+      </if>
+      <if test="updatedtime != null" >
+        updatedTime = #{updatedtime,jdbcType=DATE},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bosssoft.hr.bes.exam.pojo.pojo.User" >
+    update t_user
+    set jobNum = #{jobnum,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      headPhoto = #{headphoto,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=SMALLINT},
+      birth = #{birth,jdbcType=DATE},
+      telePhone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      otherPhone = #{otherphone,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT},
+      createdTime = #{createdtime,jdbcType=DATE},
+      updatedTime = #{updatedtime,jdbcType=DATE},
+      version = #{version,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>
